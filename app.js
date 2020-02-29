@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
+
 require('dotenv').config();
 
 const dbPath = process.env.MONGODB_URI;
@@ -24,6 +25,8 @@ mongoose
 
 const indexRouter = require('./routes/index');
 const resortsRouter = require('./routes/resorts');
+const addRouter = require('./routes/add');
+const updateRouter = require('./routes/update');
 
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
 
@@ -41,6 +44,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/resorts', resortsRouter);
+app.use('/add', addRouter);
+app.use('/update', updateRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -1,6 +1,6 @@
 <h1>List all resorts</h1>
 <ul>
   {{#each resorts }}
-  <li>{{ this.name }}</li>
+  <li><a href="http://localhost:3000//update/:{{this.id}}">{{ this.name }}</a></li>
   {{/each}}
 </ul>
